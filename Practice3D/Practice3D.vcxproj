@@ -69,14 +69,35 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)debug</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)debug</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)debug</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)debug</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)lib\SDL2-2.0.7\include;$(ProjectDir)lib\SDL2_image-2.0.2\include;$(ProjectDir)lib\SDL2_mixer-2.0.2\include;$(ProjectDir)lib\SDL2_net-2.0.1\include;$(ProjectDir)lib\SDL2_ttf-2.0.14\include;$(ProjectDir)lib\Assimp-3.3.1\include;$(ProjectDir)lib\glm-0.9.8.5\glm\glm;$(ProjectDir)lib\glew-2.1.0\include;$(ProjectDir)lib\SOIL\include</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2-2.0.7\lib\x86;$(ProjectDir)lib\SDL2_image-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_mixer-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_net-2.0.1\lib\x86;$(ProjectDir)lib\SDL2_ttf-2.0.14\lib\x86;$(ProjectDir)lib\Assimp-3.3.1\lib\x86;$(ProjectDir)lib\glew-2.1.0\lib\Release\Win32;$(ProjectDir)lib\SOIL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;glew32.lib;glew32s.lib;assimp.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -84,7 +105,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)lib\SDL2-2.0.7\include;$(ProjectDir)lib\SDL2_image-2.0.2\include;$(ProjectDir)lib\SDL2_mixer-2.0.2\include;$(ProjectDir)lib\SDL2_net-2.0.1\include;$(ProjectDir)lib\SDL2_ttf-2.0.14\include;$(ProjectDir)lib\Assimp-3.3.1\include;$(ProjectDir)lib\glm-0.9.8.5\glm\glm;$(ProjectDir)lib\glew-2.1.0\include;$(ProjectDir)lib\SOIL\include</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2-2.0.7\lib\x86;$(ProjectDir)lib\SDL2_image-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_mixer-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_net-2.0.1\lib\x86;$(ProjectDir)lib\SDL2_ttf-2.0.14\lib\x86;$(ProjectDir)lib\Assimp-3.3.1\lib\x86;$(ProjectDir)lib\glew-2.1.0\lib\Release\Win32;$(ProjectDir)lib\SOIL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;glew32.lib;glew32s.lib;assimp.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,10 +121,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)lib\SDL2-2.0.7\include;$(ProjectDir)lib\SDL2_image-2.0.2\include;$(ProjectDir)lib\SDL2_mixer-2.0.2\include;$(ProjectDir)lib\SDL2_net-2.0.1\include;$(ProjectDir)lib\SDL2_ttf-2.0.14\include;$(ProjectDir)lib\Assimp-3.3.1\include;$(ProjectDir)lib\glm-0.9.8.5\glm\glm;$(ProjectDir)lib\glew-2.1.0\include;$(ProjectDir)lib\SOIL\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2-2.0.7\lib\x86;$(ProjectDir)lib\SDL2_image-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_mixer-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_net-2.0.1\lib\x86;$(ProjectDir)lib\SDL2_ttf-2.0.14\lib\x86;$(ProjectDir)lib\Assimp-3.3.1\lib\x86;$(ProjectDir)lib\glew-2.1.0\lib\Release\Win32;$(ProjectDir)lib\SOIL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;glew32.lib;glew32s.lib;assimp.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -108,13 +139,23 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(ProjectDir)lib\SDL2-2.0.7\include;$(ProjectDir)lib\SDL2_image-2.0.2\include;$(ProjectDir)lib\SDL2_mixer-2.0.2\include;$(ProjectDir)lib\SDL2_net-2.0.1\include;$(ProjectDir)lib\SDL2_ttf-2.0.14\include;$(ProjectDir)lib\Assimp-3.3.1\include;$(ProjectDir)lib\glm-0.9.8.5\glm\glm;$(ProjectDir)lib\glew-2.1.0\include;$(ProjectDir)lib\SOIL\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2-2.0.7\lib\x86;$(ProjectDir)lib\SDL2_image-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_mixer-2.0.2\lib\x86;$(ProjectDir)lib\SDL2_net-2.0.1\lib\x86;$(ProjectDir)lib\SDL2_ttf-2.0.14\lib\x86;$(ProjectDir)lib\Assimp-3.3.1\lib\x86;$(ProjectDir)lib\glew-2.1.0\lib\Release\Win32;$(ProjectDir)lib\SOIL;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;glew32.lib;glew32s.lib;assimp.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Context.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Common.h" />
+    <ClInclude Include="src\Context.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
