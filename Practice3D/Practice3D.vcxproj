@@ -150,12 +150,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Common.cpp" />
     <ClCompile Include="src\Context.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Utils\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Common.h" />
     <ClInclude Include="src\Context.h" />
+    <ClInclude Include="src\Utils\Shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,8 +12,8 @@
 #define DEF_HEIGHT		600
 #define DEF_FPS			60
 
-int screen_width;
-int screen_height;
+extern int screen_width;
+extern int screen_height;
 
 #endif // !COMMON_H
 
