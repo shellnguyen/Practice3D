@@ -14,6 +14,14 @@
 
 extern int screen_width;
 extern int screen_height;
+extern glm::mat4 model_matrix;
+extern glm::mat4 view_matrix;
+extern glm::mat4 projection_matrix;
+extern glm::mat4 translation_matrix;
+extern glm::mat4 rotation_matrix;
+extern glm::mat4 scaling_matrix;
+
+void SetupMatrix();
 
 #endif // !COMMON_H
 

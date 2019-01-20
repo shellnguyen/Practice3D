@@ -86,7 +86,13 @@ bool Init()
 {
 	myShader = new Shader();
 
-	if (myShader->Init("data/shaders/TextureVS.glsl", "data/shaders/TextureFS.glsl") != 0)
+	//if (myShader->Init("data/shaders/TextureVS.glsl", "data/shaders/TextureFS.glsl") != 0)
+	//{
+	//	SDL_Log("Failed to load shader !!!");
+	//	return false;
+	//}
+
+	if (myShader->Init("data/shaders/BasicTransformVS.glsl", "data/shaders/BasicTransformFS.glsl") != 0)
 	{
 		SDL_Log("Failed to load shader !!!");
 		return false;
@@ -99,6 +105,10 @@ bool Init()
 
 void OnUpdate(float dt)
 {
+	//translation_matrix = glm::translate(translation_matrix, glm::vec3(0.5f, -0.5f, 0.0f));
+	translation_matrix = glm::rotate(translation_matrix, dt * glm::radians(2.5f), glm::vec3(0.0f, 0.0f, 1.0f));
+
+	model_matrix = translation_matrix;
 }
 
 void OnRender()
@@ -109,6 +119,7 @@ void OnRender()
 	// draw our first triangle
 	glUseProgram(myShader->GetProgram());
 	glBindTexture(GL_TEXTURE_2D, texture);
+	glUniformMatrix4fv(myShader->GetMvpMatrix(), 1, GL_FALSE, glm::value_ptr(model_matrix));
 	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 							//glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

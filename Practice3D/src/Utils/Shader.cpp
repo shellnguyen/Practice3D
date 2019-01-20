@@ -134,6 +134,7 @@ GLuint Shader::Init(const char* vsPath, const char* fsPath)
 
 	//finding location of uniforms / attributes
 	//positionAttribute = glGetAttribLocation(program, "a_posL");
+	m_MvpId = glGetUniformLocation(m_Program, "uMvp");
 
 	return 0;
 }
@@ -151,4 +152,9 @@ GLuint Shader::GetVertexShader() const
 GLuint Shader::GetFragmentShader() const
 {
 	return m_FragmentShaderId;
+}
+
+GLuint Shader::GetMvpMatrix() const
+{
+	return m_MvpId;
 }

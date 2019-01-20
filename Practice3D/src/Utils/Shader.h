@@ -10,6 +10,7 @@ private:
 	GLuint LoadProgram(GLuint vertexShaderId, GLuint fragmentShaderId);
 
 	GLuint m_Program, m_VertexShaderId, m_FragmentShaderId;
+	GLuint m_MvpId;
 public:
 	Shader();
 	~Shader();
@@ -17,6 +18,7 @@ public:
 	GLuint GetProgram() const;
 	GLuint GetVertexShader() const;
 	GLuint GetFragmentShader() const;
+	GLuint GetMvpMatrix() const;
 
 	GLuint Init(const char* vsPath, const char* fsPath);
 };
